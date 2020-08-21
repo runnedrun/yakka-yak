@@ -2,25 +2,27 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Box from '@material-ui/core/Box'
 import FormControl from '@material-ui/core/FormControl'
+import MenuItem from '@material-ui/core/MenuItem'
 import Select from '@material-ui/core/Select'
 import InputLabel from '@material-ui/core/InputLabel'
+import { observer } from 'mobx-react'
 
 const useStyles = makeStyles(theme => ({
   formControl: {
     margin: theme.spacing(1),
     minWidth: 120
-  },
-  selectEmpty: {
-    marginTop: theme.spacing(2)
   }
 }))
 
-function App() {
+const AudioDevicePicker = observer(({ devices }) => {
   const classes = useStyles()
 
   const selectDevice = () => {
     // set mobx thingy here
+    console.log('hiiii')
   }
+
+  console.log('diev', devices)
 
   return (
     <Box>
@@ -29,7 +31,7 @@ function App() {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={age}
+          value={10}
           onChange={selectDevice}
         >
           <MenuItem value={10}>Ten</MenuItem>
@@ -39,6 +41,6 @@ function App() {
       </FormControl>
     </Box>
   )
-}
+})
 
-export default App
+export default AudioDevicePicker

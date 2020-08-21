@@ -1,16 +1,14 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import AudioDevicePicker from './AudioDevicePicker'
+import AvailableDevicesStore from "./AvailableDevicesStore"
 
 function App() {
+  const deviceStore = new AvailableDevicesStore()
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        I AM MASTER
-      </header>
+      <AudioDevicePicker devices={deviceStore.devices} />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
