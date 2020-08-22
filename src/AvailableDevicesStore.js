@@ -1,20 +1,19 @@
-import { decorate, observable } from 'mobx'
-
 class AvailableDevicesStore {
   constructor() {
     const enumeratorPromise = navigator.mediaDevices.enumerateDevices()
     enumeratorPromise.then(availableDevices => {
-      console.log('finid', availableDevices)
-      this.devices = this.devices.concat(availableDevices)
+      const audioDevices = availableDevices.filter(
+        device => device.kind == 'audioinput'
+      )
+
+      this.devices = this.devices.concat(audioDevices)
+
+      console.log("d", devices)
 
       // devices.push()
     })
   }
   devices = []
 }
-
-decorate(AvailableDevicesStore, {
-  devices: observable
-})
 
 export default AvailableDevicesStore

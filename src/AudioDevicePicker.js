@@ -5,7 +5,7 @@ import FormControl from '@material-ui/core/FormControl'
 import MenuItem from '@material-ui/core/MenuItem'
 import Select from '@material-ui/core/Select'
 import InputLabel from '@material-ui/core/InputLabel'
-import { observer } from 'mobx-react'
+import { useStore} from './useStore'
 
 const useStyles = makeStyles(theme => ({
   formControl: {
@@ -14,12 +14,13 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const AudioDevicePicker = observer(({ devices }) => {
+const AudioDevicePicker = () => {
   const classes = useStyles()
+  const { devices } = useStore()
 
-  const selectDevice = () => {
+  const selectDevice = e => {
     // set mobx thingy here
-    console.log('hiiii')
+    console.log('hiiii', e, e.target.value)
   }
 
   console.log('diev', devices)
@@ -34,13 +35,17 @@ const AudioDevicePicker = observer(({ devices }) => {
           value={10}
           onChange={selectDevice}
         >
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          {devices.map(device => {
+            return (
+              <MenuItem key={device.id} value={device.id}>
+                {device.label || 'default'}
+              </MenuItem>
+            )
+          })}
         </Select>
       </FormControl>
     </Box>
   )
-})
+}
 
 export default AudioDevicePicker
