@@ -1,14 +1,12 @@
 import React from 'react'
 import AudioDevicePicker from './AudioDevicePicker'
-import AvailableDevicesStore from './AvailableDevicesStore'
-import { StoreProvider } from './useStore'
+import { StoreProvider } from './StoreProvider'
 
 function App() {
-  const deviceStore = new AvailableDevicesStore()
   return (
     <StoreProvider>
       <div className="App">
-        <AudioDevicePicker deviceStore={deviceStore} />
+        <AudioDevicePicker />
       </div>
     </StoreProvider>
   )

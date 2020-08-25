@@ -5,7 +5,8 @@ import FormControl from '@material-ui/core/FormControl'
 import MenuItem from '@material-ui/core/MenuItem'
 import Select from '@material-ui/core/Select'
 import InputLabel from '@material-ui/core/InputLabel'
-import { useStore} from './useStore'
+import useAvailableDevicesStore from "./useAvailableDevicesStore"
+import { useLocalStore } from 'mobx-react'
 
 const useStyles = makeStyles(theme => ({
   formControl: {
@@ -16,11 +17,21 @@ const useStyles = makeStyles(theme => ({
 
 const AudioDevicePicker = () => {
   const classes = useStyles()
-  const { devices } = useStore()
+  // const { devices } = useAvailableDevicesStore()
+  const {devices} = useLocalStore(() => {
+    return {
+      devices: []
+    }
+  })
 
   const selectDevice = e => {
     // set mobx thingy here
     console.log('hiiii', e, e.target.value)
+  }
+
+  window.hit = () => {
+    devices.push(9)
+    console.log("deicces", devices)
   }
 
   console.log('diev', devices)
