@@ -6,6 +6,7 @@ import MenuItem from '@material-ui/core/MenuItem'
 import Select from '@material-ui/core/Select'
 import InputLabel from '@material-ui/core/InputLabel'
 import useAvailableDevicesStore from './useAvailableDevicesStore'
+import useSelectedDevice from './useSelectedDevice'
 
 const useStyles = makeStyles(theme => ({
   formControl: {
@@ -18,11 +19,13 @@ const AudioDevicePicker = () => {
   const classes = useStyles()
 
   const availableDevices = useAvailableDevicesStore() || []
+  const [selectedDevice, setDevice] = useSelectedDevice()
 
-  console.log('diev', availableDevices)
+  console.log('diev', availableDevices, selectedDevice)
 
   const selectDevice = () => {
     console.log('sdfs')
+    setDevice('test')
   }
 
   return (
