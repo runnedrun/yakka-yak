@@ -23,11 +23,6 @@ const AudioDevicePicker = () => {
 
   console.log('diev', availableDevices, selectedDevice)
 
-  const selectDevice = () => {
-    console.log('sdfs')
-    setDevice('test')
-  }
-
   return (
     <Box>
       <FormControl className={classes.formControl}>
@@ -35,8 +30,8 @@ const AudioDevicePicker = () => {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={10}
-          onChange={selectDevice}
+          value={selectedDevice}
+          onChange={e => setDevice(e.target.value)}
         >
           {availableDevices.map(device => {
             return (
