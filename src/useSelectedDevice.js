@@ -1,9 +1,14 @@
-import { BehaviorSubject, interval } from 'rxjs'
+import { BehaviorSubject } from 'rxjs'
 // import { useObservableState, useSubscription } from 'observable-hooks'
 import { useObservableState } from 'observable-hooks'
 
-const state = new BehaviorSubject()
-// interval(2000).subscribe(state)
-export default () => {
-  return [useObservableState(state), state.next.bind(state)]
+const selectedDeviceStore = new BehaviorSubject()
+
+const useSelectedDevice = () => {
+  return [
+    useObservableState(selectedDeviceStore),
+    _ => selectedDeviceStore.next(_)
+  ]
 }
+// interval(2000).subscribe(state)
+export { useSelectedDevice, selectedDeviceStore }

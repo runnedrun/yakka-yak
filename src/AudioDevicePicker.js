@@ -6,7 +6,7 @@ import MenuItem from '@material-ui/core/MenuItem'
 import Select from '@material-ui/core/Select'
 import InputLabel from '@material-ui/core/InputLabel'
 import useAvailableDevicesStore from './useAvailableDevicesStore'
-import useSelectedDevice from './useSelectedDevice'
+import { useSelectedDevice } from './useSelectedDevice'
 
 const useStyles = makeStyles(theme => ({
   formControl: {
